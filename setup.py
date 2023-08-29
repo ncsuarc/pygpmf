@@ -20,5 +20,5 @@ if __name__ == "__main__":
             "python-ffmpeg", "geopandas",
             "contextily", "descartes"
         ],
-        url="https://github.com/alexis-mignon/pygpmf"
+        url="https://github.com/ncsuarc/pygpmf"
     )
