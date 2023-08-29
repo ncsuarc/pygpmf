@@ -71,8 +71,7 @@ def parse_payload(x, fourcc, type_str, size, repeat):
                 x = list(numpy.frombuffer(x, dtype="S%i" % size))
                 return [s.decode("latin1") for s in x]
             else:
-                return x.decode("latin1")
-
+                return x.decode("latin1")            
         elif type_str in num_types:
             dtype, stype = num_types[type_str]
             dtype = numpy.dtype(">" + stype)
@@ -118,11 +117,13 @@ def iter_klv(x):
         fourcc = (b"".join(head[:4])).decode()
         type_str, size, repeat = head[4:]
         type_str = type_str.decode()
+
+        if fourcc == "GPS9":
+            type_str = "l"
         start += 8
         payload_size = ceil4(size * repeat)
         payload = parse_payload(x[start: start + payload_size], fourcc, type_str, size, repeat)
         start += payload_size
-
         yield KLVItem(fourcc, KLVLength(type_str, size, repeat), payload)
 
 
