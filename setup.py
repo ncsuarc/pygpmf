@@ -16,7 +16,8 @@ if __name__ == "__main__":
         version=__version__,
         packages=find_packages(),
         install_requires=[
-            "numpy", "pandas", "gpxpy",
+            "setuptools",
+            "numpy>=1.0", "pandas", "gpxpy",
             "python-ffmpeg", "geopandas",
             "contextily", "descartes"
         ],
